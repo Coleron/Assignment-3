@@ -51,7 +51,9 @@ map.on('load', function(){
             'property': 'base_height'
             },
             'fill-extrusion-opacity': 1
-          }
+          }          
+     });
+    
 map.addLayer({
         'id': '3d-buildings',
         'source': 'composite',
@@ -75,9 +77,8 @@ map.addLayer({
             ],
             'fill-extrusion-opacity': .6
         }
-    }, labelLayerId);      
-      
-     });
+    }, labelLayerId);    
+    
 });
     
     
