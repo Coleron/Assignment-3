@@ -26,6 +26,7 @@ var map = new mapboxgl.Map({
     bearing: -17.6,
     zoom: 11 // starting zoom
 });
+    
 map.on('load', function(){
   map.addLayer({
     "id":"data",
@@ -53,7 +54,18 @@ map.on('load', function(){
             'fill-extrusion-opacity': 1
           }          
     
-    });
+map.on('load', function() {
+    // Insert the layer beneath any symbol layer.
+    var layers = map.getStyle().layers;
+
+    var labelLayerId;
+    for (var i = 0; i < layers.length; i++) {
+        if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+            labelLayerId = layers[i].id;
+            break;
+        }
+    }
+
     map.addLayer({
         'id': '3d-buildings',
         'source': 'composite',
@@ -79,7 +91,7 @@ map.on('load', function(){
             'fill-extrusion-opacity': .6
         }
     }, labelLayerId);
-});
+}); 
 
 </script>
 
